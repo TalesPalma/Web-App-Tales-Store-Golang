@@ -1,0 +1,62 @@
+{{define "Form"}}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adicionar Novo Produto</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .form-container {
+      max-width: 600px;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="bg-primary text-white text-center py-4">
+    <h1>Adicionar Novo Produto</h1>
+  </header>
+
+  <main class="container form-container">
+    <form action="/add-product" method="POST">
+      <div class="form-group">
+        <label for="productName">Nome do Produto</label>
+        <input type="text" class="form-control" id="productName" name="productName" required>
+      </div>
+      <div class="form-group">
+        <label for="productDescription">Descrição</label>
+        <textarea class="form-control" id="productDescription" name="productDescription" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="productPrice">Preço</label>
+        <input type="number" class="form-control" id="productPrice" name="productPrice" step="0.01" required>
+      </div>
+      <div class="form-group">
+        <label for="productCategory">Categoria</label>
+        <select class="form-control" id="productCategory" name="productCategory" required>
+          <option value="" disabled selected>Selecione uma Categoria</option>
+          <option value="eletronicos">Eletrônicos</option>
+          <option value="roupas">Roupas</option>
+          <option value="acessorios">Acessórios</option>
+          <!-- Adicione mais categorias conforme necessário -->
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Adicionar Produto</button>
+    </form>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>&copy; 2024 Sua Loja. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+{{end}}

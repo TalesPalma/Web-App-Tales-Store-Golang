@@ -1,50 +1,61 @@
 {{define "Index"}}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-  <link href="css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Produtos</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card-deck .card {
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-light bg-light mb-4">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
     <a class="navbar-brand" href="/">Tales Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Products</a>
+        </li>
+      </ul>
+    </div>
   </nav>
-  <div class="container">
-    <section class="card">
-      <div>
-        <table class="table table-striped table-hover mb-0">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Quantity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {{range .}}
-            <tr>
-              <td>{{.Name}}</td>
-              <td>{{.Desc}}</td>
-              <td>{{.Price}}</td>
-              <td>{{.Qtty}}</td>
-            </tr>
-            {{end}}
-          </tbody>
-        </table>
+
+  <main class="container">
+    <h1 class="my-4">Nossos Produtos</h1>
+    <div class="card-deck">
+      {{ range .}}
+      <!-- Card de produto -->
+      <div class="card">
+        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Nome do Produto">
+        <div class="card-body">
+          <h5 class="card-title">{{.Name}}</h5>
+          <p class="card-text">{{.Desc}}</p>
+          <p class="card-text"><strong>{{.Price}}</strong></p>
+          <a href="/product-details/1" class="btn btn-primary">Ver Detalhes</a>
+        </div>
       </div>
-    </section>
-  </div>
+      {{end}}
+    </div>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>&copy; 2024 Tales Store. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,35 @@
+
+# Versão do Docker Compose
+version: '3.9'
+
+services:
+  # Serviço para o banco de dados PostgreSQL
+  db:
+    # Nome do contêiner
+    container_name: postgres_golang_store
+    # Imagem do PostgreSQL a ser usada
+    image: postgres
+    # Sempre reiniciar o contêiner se ele falhar
+    restart: no
+    # Tamanho da memória compartilhada (shm) para o contêiner
+    shm_size: 128mb
+
+    # Configurações de ambiente para o PostgreSQL
+    environment:
+      # Senha para o usuário padrão do PostgreSQL
+      POSTGRES_PASSWORD: root
+
+    # Mapeia a porta 5433 do host para a porta 5432 do contêiner
+    ports:
+      - 5433:5432
+
+  # Serviço para o Adminer, uma ferramenta de administração para bancos de dados
+  adminer:
+    # Imagem do Adminer a ser usada
+    image: adminer
+    # Sempre reiniciar o contêiner se ele falhar
+    restart: always
+    # Mapeia a porta 8080 do contêiner para a porta 8080 do host
+    ports:
+      - 8080:8080
+
