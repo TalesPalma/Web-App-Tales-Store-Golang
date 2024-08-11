@@ -60,7 +60,7 @@ func FormService(newProd models.Product) {
 
 }
 
-func DetailsSerive(id int) models.Product {
+func DetailsService(id int) models.Product {
 	db := db.ConnectDatabase()
 	var p models.Product
 
@@ -71,4 +71,10 @@ func DetailsSerive(id int) models.Product {
 
 	defer db.Close()
 	return p
+}
+
+func DeleteService(id int) {
+	db := db.ConnectDatabase()
+	db.Exec("Delete from product where id=$1", id)
+	defer db.Close()
 }

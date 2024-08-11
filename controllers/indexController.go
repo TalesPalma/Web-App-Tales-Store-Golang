@@ -52,5 +52,12 @@ func SubmitPage(w http.ResponseWriter, r *http.Request) {
 func DetailsPage(w http.ResponseWriter, r *http.Request) {
 	idFromUrl := r.URL.Query().Get("id")
 	id, _ := strconv.Atoi(idFromUrl)
-	temp.ExecuteTemplate(w, "Details", services.DetailsSerive(id))
+	temp.ExecuteTemplate(w, "Details", services.DetailsService(id))
+}
+
+func DeletePage(w http.ResponseWriter, r *http.Request) {
+	idFromUrl := r.URL.Query().Get("id")
+	id, _ := strconv.Atoi(idFromUrl)
+	services.DeleteService(id)
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }

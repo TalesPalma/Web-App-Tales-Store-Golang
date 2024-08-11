@@ -23,6 +23,16 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
+    .btn-delete {
+      margin-top: 20px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -58,6 +68,7 @@
       </div>
 
       <a href="/" class="btn btn-primary">Voltar</a>
+      <a href="/delete?id={{.ID}}" class="btn-delete">Delete</a>
     </div>
   </div>
 
