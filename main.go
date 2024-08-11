@@ -23,6 +23,7 @@ func main() {
 	http.HandleFunc("/submit", controllers.SubmitPage)
 	http.HandleFunc("/details", controllers.DetailsPage)
 	http.HandleFunc("/delete", controllers.DeletePage)
+	http.HandleFunc("/edit", controllers.EditPage)
 
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {

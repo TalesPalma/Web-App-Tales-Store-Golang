@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/TalesPalma/web-app-golang/db"
@@ -76,5 +77,19 @@ func DetailsService(id int) models.Product {
 func DeleteService(id int) {
 	db := db.ConnectDatabase()
 	db.Exec("Delete from product where id=$1", id)
+	defer db.Close()
+}
+
+func EditService(newProd models.Product) {
+	db := db.ConnectDatabase()
+
+	fmt.Println(newProd.ID)
+	db.Exec(
+		`UPDATE product
+		SET nameproduct = $1, description = $2, price = $3, qtty = $4
+		WHERE id = $5`,
+		newProd.Name, newProd.Desc, newProd.Price, newProd.Qtty, newProd.ID,
+	)
+
 	defer db.Close()
 }

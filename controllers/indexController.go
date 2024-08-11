@@ -61,3 +61,30 @@ func DeletePage(w http.ResponseWriter, r *http.Request) {
 	services.DeleteService(id)
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
+
+func EditPage(w http.ResponseWriter, r *http.Request) {
+	idFromUrl := r.URL.Query().Get("id")
+	id, _ := strconv.Atoi(idFromUrl)
+
+	if r.Method == "POST" {
+		name := r.FormValue("productName")
+		desc := r.FormValue("productDescription")
+		price := r.FormValue("productPrice")
+		qtty := r.FormValue("productQuantity")
+
+		convertPrice, _ := strconv.ParseFloat(price, 64)
+		convertQtty, _ := strconv.Atoi(qtty)
+
+		newProd := models.Product{
+			ID:    id,
+			Name:  name,
+			Desc:  desc,
+			Price: convertPrice,
+			Qtty:  convertQtty,
+		}
+		services.EditService(newProd)
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+	}
+
+	temp.ExecuteTemplate(w, "Edit", services.DetailsService(id))
+}

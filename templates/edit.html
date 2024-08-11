@@ -1,0 +1,51 @@
+{{define "Edit"}}
+{{template "_head"}}
+
+<body>
+  <header class="bg-primary text-white text-center py-4">
+    <h1>Editando produto</h1>
+  </header>
+
+  <main class="container form-container">
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="productName">Nome do Produto</label>
+        <input type="text" class="form-control" id="productName" name="productName" value="{{.Name}}" required>
+      </div>
+      <div class="form-group">
+        <label for="productDescription">Descrição</label>
+        <textarea class="form-control" id="productDescription" name="productDescription" rows="4"
+          required>{{.Desc}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="productPrice">Preço</label>
+        <input type="number" class="form-control" id="productPrice" name="productPrice" step="0.01" value="{{.Price}}"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="productCategory">Quantidade</label>
+        <input type="number" class="form-control" id="productQuantity" name="productQuantity" step="0.01"
+          value="{{.Qtty}}" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Editar</button>
+      <button type="button" onclick="redirect()">cancelar</button>
+    </form>
+  </main>
+
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>&copy; 2024 Sua Loja. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+<script>
+  function redirect() {
+    window.location.href = "/"
+  }
+</script>
+
+</html>
+
+{{end}}
