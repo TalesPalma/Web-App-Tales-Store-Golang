@@ -1,0 +1,72 @@
+{{define "Details" }}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Produto</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+    }
+
+    .product-details {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="product-details">
+      <h1 class="text-center mb-4">Detalhes do Produto</h1>
+
+      <div class="form-group">
+        <label for="productID">ID:</label>
+        <p id="productID" class="form-control-plaintext">{{.ID}}</p>
+      </div>
+
+      <div class="form-group">
+        <label for="productName">Nome:</label>
+        <p id="productName" class="form-control-plaintext">{{.Name}}</p>
+      </div>
+
+      <div class="form-group">
+        <label for="productDesc">Descrição:</label>
+        <p id="productDesc" class="form-control-plaintext">{{.Desc}}</p>
+      </div>
+
+      <div class="form-group">
+        <label for="productPrice">Preço:</label>
+        <p id="productPrice" class="form-control-plaintext">R$ {{.Price}}</p>
+      </div>
+
+      <div class="form-group">
+        <label for="productQtty">Quantidade:</label>
+        <p id="productQtty" class="form-control-plaintext">{{.Qtty}}</p>
+      </div>
+
+      <a href="/" class="btn btn-primary">Voltar</a>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+{{end}}

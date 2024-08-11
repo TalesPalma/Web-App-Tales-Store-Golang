@@ -20,6 +20,8 @@ func main() {
 
 	http.HandleFunc("/", controllers.Index)
 	http.HandleFunc("/products", controllers.FormPage)
+	http.HandleFunc("/submit", controllers.SubmitPage)
+	http.HandleFunc("/details", controllers.DetailsPage)
 
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
