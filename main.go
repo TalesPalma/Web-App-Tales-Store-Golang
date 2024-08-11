@@ -2,11 +2,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/TalesPalma/web-app-golang/controllers"
 	"net/http"
+
+	"github.com/TalesPalma/web-app-golang/controllers"
+	"github.com/TalesPalma/web-app-golang/db"
 )
 
 func main() {
+
+	db := db.ConnectDatabase()
+	db.Ping()
+
 	fmt.Println("Server running on port 8080...")
 	fmt.Println("http://localhost:8080")
 

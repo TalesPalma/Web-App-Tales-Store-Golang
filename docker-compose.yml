@@ -23,13 +23,4 @@ services:
     ports:
       - 5433:5432
 
-  # Serviço para o Adminer, uma ferramenta de administração para bancos de dados
-  adminer:
-    # Imagem do Adminer a ser usada
-    image: adminer
-    # Sempre reiniciar o contêiner se ele falhar
-    restart: always
-    # Mapeia a porta 8080 do contêiner para a porta 8080 do host
-    ports:
-      - 8080:8080
 
