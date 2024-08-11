@@ -13,6 +13,8 @@ func main() {
 	db := db.ConnectDatabase()
 	db.Ping()
 
+	defer db.Close()
+
 	fmt.Println("Server running on port 8080...")
 	fmt.Println("http://localhost:8080")
 

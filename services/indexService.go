@@ -1,14 +1,32 @@
 package services
 
-import "github.com/TalesPalma/web-app-golang/models"
+import (
+	"github.com/TalesPalma/web-app-golang/db"
+	"github.com/TalesPalma/web-app-golang/models"
+)
 
 func IndexService() []models.Product {
-	var products = []models.Product{
-		{ID: 1, Name: "Product 1", Desc: "Description 1", Price: 100.0, Qtty: 10},
-		{ID: 2, Name: "Product 2", Desc: "Description 2", Price: 200.0, Qtty: 20},
-		{ID: 3, Name: "Product 3", Desc: "Description 3", Price: 300.0, Qtty: 30},
-		{ID: 3, Name: "Product 3", Desc: "Description 3", Price: 1.99, Qtty: 30},
+
+	db := db.ConnectDatabase()
+	defer db.Close()
+
+	rows, err := db.Query("SELECT * FROM product")
+
+	if err != nil {
+		panic(err)
 	}
 
+	var products []models.Product
+	for rows.Next() {
+		p := models.Product{}
+		err := rows.Scan(&p.ID, &p.Name, &p.Desc, &p.Price, &p.Qtty)
+
+		if err != nil {
+			panic(err)
+		}
+
+		products = append(products, p)
+	}
+	//Get all products
 	return products
 }
