@@ -1,40 +1,5 @@
 {{define "Details" }}
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalhes do Produto</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      padding-top: 20px;
-    }
-
-    .container {
-      max-width: 800px;
-    }
-
-    .product-details {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-delete {
-      margin-top: 20px;
-      background: red;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
+{{template "_head"}}
 
 <body>
 
@@ -68,7 +33,7 @@
       </div>
 
       <a href="/" class="btn btn-primary">Voltar</a>
-      <a href="/delete?id={{.ID}}" class="btn-delete">Delete</a>
+      <button class="btn-delete" onclick="onDelete({{.ID}})">Delete</button>
     </div>
   </div>
 
@@ -77,6 +42,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+<script>
+  function onDelete(id) {
+    response = confirm("Deseja mesmo deletar esse produto ?")
+    if (response) {
+      window.location.href = `delete?id=${id}`
+    }
+    return
+  }
+</script>
 
 </html>
 
